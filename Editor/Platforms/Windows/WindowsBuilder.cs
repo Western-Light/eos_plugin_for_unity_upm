@@ -348,6 +348,12 @@ namespace PlayEveryWare.EpicOnlineServices.Editor.Build
 
         private static async void ConfigureAndInstallBootstrapper(BuildReport report)
         {
+#if !UNITY_EDITOR_WIN
+            // Hote non-Windows (cross-compile Linux->Windows) : EOSBootstrapperTool.exe
+            // ne peut pas tourner ici. Le bootstrapper est installe par un job CI Windows dedie.
+            await System.Threading.Tasks.Task.CompletedTask;
+            return;
+#endif
 #if EOS_DISABLE
             // If EOS_DISABLE is defined, then the bootstrapper should never be included
             await System.Threading.Tasks.Task.CompletedTask;

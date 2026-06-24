@@ -194,7 +194,7 @@ namespace PlayEveryWare.EpicOnlineServices.Editor.Build
         {
             // Note: This compile conditional exists because it only makes sense
             // to look for visual studio installations if running on windows.
-#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+#if UNITY_EDITOR_WIN
             BuildUtility.FindVSInstallations();
 #endif
 
